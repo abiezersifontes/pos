@@ -42,4 +42,4 @@ msgstr ""
 #: code:addons/pos_backup_draft_orders/static/src/js/pbdo.js:50
 #, python-format
 msgid "Keep in Draft"
-msgstr "Sauvegarder"
+msgstr "Guardar como Borrador"

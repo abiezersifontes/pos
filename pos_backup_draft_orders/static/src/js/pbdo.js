@@ -31,7 +31,7 @@ openerp.pos_backup_draft_orders = function (instance) {
         displayBackupButton: function(){
             if (this.backup_order_button){
                 var order = this.pos.get('selectedOrder');
-                if (((order.get('orderLines').length + order.get('paymentLines').length) > 0) && 
+                if (((order.get('orderLines').length + order.get('paymentLines').length) > 0) &&
                         (order.getChange()<0 && (Math.abs(order.getChange()) > 0.000001))){
                     this.backup_order_button.$el.fadeIn();
                 }
@@ -44,23 +44,24 @@ openerp.pos_backup_draft_orders = function (instance) {
         build_widgets: function(){
             this._super();
             var self = this;
-
             // Create a button to backup the current order
             this.backup_order_button = new module.HeaderButtonWidget(this,{
                 label:_t('Keep in Draft'),
-                action: function(){ self.backup_order(); },
+                    action: function(){
+                    self.backup_order();
+                },
             });
             this.backup_order_button.appendTo(this.$('#pos_order_header'));
             this.pos.bind('change:selectedOrder', this.displayBackupButton, this);
             this.backup_order_button.$el.fadeOut();
-        },
 
+        },
         backup_order: function() {
             var order = this.pos.get('selectedOrder');
             this.pos.push_order(order.exportAsJSON());
+            this.pos_widget.screen_selector.set_current_screen('receipt');
             this.pos.get('selectedOrder').destroy();
         },
-
     });
 
     module.OrderWidget = module.OrderWidget.extend({

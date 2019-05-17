@@ -50,6 +50,7 @@ Copyright, Authors and Licence:
         'pos_second_header',
     ],
     'js': [
+        'static/src/js/jquery-barcode.min.js',
         'static/src/js/pbdo.js',
     ],
     'css': [
